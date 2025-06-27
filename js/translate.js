@@ -195,7 +195,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Fungsi ganti bahasa + refresh
     window.changeLang = function(lang) {
-        localStorage.setItem('selectedLang', lang);
-        location.reload(); // Refresh halaman
-    };
+    localStorage.setItem('selectedLang', lang);
+    i18next.changeLanguage(lang, function() {
+        translateContent();
+        updateActiveButton(lang);
+    });
+};
 });
